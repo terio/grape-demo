@@ -3,6 +3,7 @@ import paths from '../paths.babel';
 import {resolve} from 'path';
 
 export default {
+    mode: 'production',
     devtool: 'inline-source-map',
     target: 'node',
     node: {

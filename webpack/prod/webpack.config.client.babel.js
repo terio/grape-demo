@@ -6,6 +6,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 
 export default {
+    mode: 'production',
     devtool: 'source-map',
     entry: {
         main: paths.CLIENT_ENTRY,

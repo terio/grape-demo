@@ -4,6 +4,7 @@ import {resolve} from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 export default {
+    mode: 'development',
     devtool: 'eval-source-map',
     entry: [
         paths.CLIENT_ENTRY
