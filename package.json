@@ -1,0 +1,38 @@
+{
+  "name": "grape-demo",
+  "version": "0.1.0",
+  "main": "index.js",
+  "repository": "git@github.com:subbu963/grape-demo.git",
+  "author": "subramanyam963@gmail.com",
+  "license": "MIT",
+  "scripts": {
+    "watch:grape": "nodemon --watch ../grape --ignore lib/ --exec 'yarn upgrade grape'",
+    "start:dev:server": "webpack-dev-server --config webpack/dev/webpack.config.client.babel.js",
+    "start:prod:server": "yarn build:prod:client && yarn build:prod:server && node --inspect build/server/main",
+    "build:prod:server": "rm -rf build/server && webpack --config webpack/prod/webpack.config.server.babel.js",
+    "build:prod:client": "rm -rf build/client && webpack --config webpack/prod/webpack.config.client.babel.js"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/plugin-transform-async-to-generator": "^7.2.0",
+    "@babel/preset-env": "^7.3.1",
+    "babel-loader": "^8.0.5",
+    "babel-preset-grape": "https://github.com/terio/babel-preset-grape",
+    "css-loader": "^2.1.0",
+    "html-webpack-plugin": "^3.2.0",
+    "isomorphic-style-loader": "^4.0.0",
+    "mini-css-extract-plugin": "^0.5.0",
+    "node-sass": "^4.11.0",
+    "nodemon": "^1.18.10",
+    "sass-loader": "^7.1.0",
+    "source-map-support": "^0.5.10",
+    "style-loader": "^0.23.1",
+    "uglifyjs-webpack-plugin": "^2.1.1",
+    "webpack": "^4.29.3",
+    "webpack-dev-server": "^3.1.14",
+    "webpack-node-externals": "^1.7.2",
+    "webpack-stats-plugin": "^0.2.1"
+  }
+}
