@@ -6,7 +6,6 @@
   "author": "subramanyam963@gmail.com",
   "license": "MIT",
   "scripts": {
-    "watch:grape": "nodemon --watch ../grape --ignore lib/ --exec 'yarn upgrade grape'",
     "start:dev:server": "webpack-dev-server --config webpack/dev/webpack.config.client.babel.js",
     "start:prod:server": "yarn build:prod:client && yarn build:prod:server && node --inspect build/server/main",
     "build:prod:server": "rm -rf build/server && webpack --config webpack/prod/webpack.config.server.babel.js",
@@ -35,5 +34,6 @@
     "webpack-dev-server": "^3.1.14",
     "webpack-node-externals": "^1.7.2",
     "webpack-stats-plugin": "^0.2.1"
-  }
+  },
+  "dependencies": {}
 }
