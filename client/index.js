@@ -2,4 +2,6 @@ import grape from 'grape';
 import grapeDOM from 'grape/lib/dom';
 import App from './components/App';
 
-grapeDOM.mount(document.body, <App/>)
+const app = <App/>;
+console.log(app)
+grapeDOM.mount(document.getElementById('app'), app);
