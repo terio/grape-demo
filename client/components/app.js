@@ -11,8 +11,8 @@ export default class App extends Component {
     constructor(props, children) {
         super(props, children);
         this.state = {
-            counter: 2,
-            items: [1,2]
+            counter: 0,
+            items: []
         };
     }
     add() {
@@ -29,6 +29,6 @@ export default class App extends Component {
         });
     }
     render() {
-        return <div>yo<span>Yo man</span><button onclick={this.add.bind(this)}>add</button><button onclick={this.remove.bind(this)}>remove</button><div><List items={this.state.items}/></div></div>;
+        return <div>yo{this.state.counter % 2 ? <span>Yo man</span> : null}<button onclick={this.add.bind(this)}>add</button><button onclick={this.remove.bind(this)}>remove</button><div><List items={this.state.items}/></div></div>;
     }
 };
