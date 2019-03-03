@@ -4,8 +4,10 @@ class List extends Component {
         this.setState({});
     }
     render() {
-        // return <ul onclick={this.handleClick.bind(this)}>{this.props.custom.items.map(e => <Li key={e}>{e}</Li>)}</ul>;
-        return <ul onclick={this.handleClick.bind(this)}>{this.props.custom.items.map(e => <li onclick={this.props.custom.deleteItem.bind(null, e)} key={e}>{e}</li>)}</ul>;
+        // return <ul onclick={this.handleClick.bind(this)}><li>start</li>{this.props.custom.items.map(e => <Li key={e}>{e}</Li>)}<li>end</li></ul>;
+        return <ul onclick={this.handleClick.bind(this)}><li>start</li>{this.props.custom.items.filter(e => e % 2).map((e) => {
+            return <Li onclick={this.props.custom.deleteItem.bind(null, e)} key={e}>{e}</Li>
+        })}<li>end</li><li>start2</li>{this.props.custom.items.map(e => <li onclick={this.props.custom.deleteItem.bind(null, e)} key={e}>{e}</li>)}<li>end2</li></ul>;
     }
 }
 class Li extends Component {}
@@ -13,8 +15,8 @@ export default class App extends Component {
     constructor(props, children) {
         super(props, children);
         this.state = {
-            counter: 0,
-            items: []
+            counter: 8,
+            items: [1,2,3,4,5,6,7,8]
         };
     }
     add() {
