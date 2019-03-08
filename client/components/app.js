@@ -11,6 +11,19 @@ class List extends Component {
     }
 }
 class Li extends Component {}
+function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+}
+function randomizeArray(ar) {
+    const newAr = Array.from(ar);
+    for(let i = newAr.length - 1; i > 0; i--) {
+        const idx = getRandomInt(i + 1);
+        const temp = newAr[idx];
+        newAr[idx] = newAr[i];
+        newAr[i] = temp;
+    }
+    return newAr;
+}
 export default class App extends Component {
     constructor(props, children) {
         super(props, children);
@@ -34,6 +47,13 @@ export default class App extends Component {
             counter: newCounter
         });
     }
+    randomize() {
+        const randomizedArray = randomizeArray(this.state.items);
+        console.log(randomizedArray)
+        this.setState({
+            items: randomizedArray
+        });
+    }
     deleteItem(num) {
         this.state.items.splice(this.state.items.indexOf(num), 1);
         this.setState({
@@ -41,6 +61,6 @@ export default class App extends Component {
         });
     }
     render() {
-        return <div>yo{this.state.counter % 2 ? <span>Yo man</span> : null}<button onclick={this.add.bind(this)}>add</button><button onclick={this.remove.bind(this)}>remove</button><div><List deleteItem={this.deleteItem.bind(this)} items={this.state.items}/></div></div>;
+        return <div><span>Array is [{this.state.items.join(', ')}]</span><button onclick={this.add.bind(this)}>add</button><button onclick={this.remove.bind(this)}>remove</button><button onclick={this.randomize.bind(this)}>randomize</button><div><List deleteItem={this.deleteItem.bind(this)} items={this.state.items}/></div></div>;
     }
 };
