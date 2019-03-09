@@ -16,9 +16,7 @@ class List extends Component {
 }
 class Li extends Component {
     render() {
-        <div>
-
-        </div>;
+        return <div>{this.children}</div>;
     }
 }
 class Li2 extends Component {
