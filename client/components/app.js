@@ -14,10 +14,16 @@ class List extends Component {
         })}<li>end</li><li>start2</li>{this.props.custom.items.map((e, idx) => <Li2 key={e} deleteItem={this.props.custom.deleteItem} liColor={LIST_STYLES[idx % 2]}>{e}</Li2>)}<li>end2</li></ul>;
     }
 }
-class Li extends Component {}
+class Li extends Component {
+    render() {
+        <div>
+
+        </div>;
+    }
+}
 class Li2 extends Component {
     render() {
-        return <li style={{'color': this.props.custom.liColor}} onclick={this.props.custom.deleteItem.bind(null, this.children[0])}>{this.children}</li>;
+        return <li style={{'color': this.props.custom.liColor}} onclick={this.props.custom.deleteItem.bind(null, this.children[0].$$textContent)}>{this.children}</li>;
     }
 }
 function getRandomInt(max) {
