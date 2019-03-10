@@ -8,10 +8,10 @@ class List extends Component {
         this.setState({});
     }
     render() {
-        // return <ul onclick={this.handleClick.bind(this)}><li>start</li>{this.props.custom.items.map(e => <Li key={e}>{e}</Li>)}<li>end</li></ul>;
-        return <ul onclick={this.handleClick.bind(this)}><li>start</li>{this.props.custom.items.filter(e => e % 2).map((e) => {
-            return <Li onclick={this.props.custom.deleteItem.bind(null, e)} key={e}>{e}</Li>
-        })}<li>end</li><li>start2</li>{this.props.custom.items.map((e, idx) => <Li2 key={e} deleteItem={this.props.custom.deleteItem} liColor={LIST_STYLES[idx % 2]}>{e}</Li2>)}<li>end2</li></ul>;
+        // return <ul onclick={this.handleClick.bind(this)}><li>start</li>{this.props.items.map(e => <Li key={e}>{e}</Li>)}<li>end</li></ul>;
+        return <ul onclick={this.handleClick.bind(this)}><li>start</li>{this.props.items.filter(e => e % 2).map((e) => {
+            return <Li onclick={this.props.deleteItem.bind(null, e)} key={e}>{e}</Li>
+        })}<li>end</li><li>start2</li>{this.props.items.map((e, idx) => <Li2 key={e} deleteItem={this.props.deleteItem} liColor={LIST_STYLES[idx % 2]}>{e}</Li2>)}<li>end2</li></ul>;
     }
 }
 class Li extends Component {
@@ -21,7 +21,7 @@ class Li extends Component {
 }
 class Li2 extends Component {
     render() {
-        return <li style={{'color': this.props.custom.liColor}} onclick={this.props.custom.deleteItem.bind(null, this.children[0].$$textContent)}>{this.children}</li>;
+        return <li style={{'color': this.props.liColor}} onclick={this.props.deleteItem.bind(null, this.children[0].$$textContent)}>{this.children}</li>;
     }
 }
 function getRandomInt(max) {

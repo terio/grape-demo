@@ -1,5 +1,5 @@
 import grape from 'grape';
-import grapeDOM from 'grape/lib/dom';
+import grapeDOM from 'grape/lib/dom/client';
 import App from './components/App';
 
 const app = <App/>;
