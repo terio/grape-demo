@@ -10,10 +10,10 @@ export default {
     devtool: 'source-map',
     entry: {
         main: paths.CLIENT_ENTRY,
-        vendor: ['terio']
+        vendor: ['grape']
     },
     output: {
-        filename: '[name].[chunkhash].js',
+        filename: '[name].[contenthash:8].js',
         path: paths.CLIENT_BUILD,
         publicPath: '/'
     },
@@ -42,18 +42,14 @@ export default {
             }
         ]
     },
+    optimization: {
+        splitChunks: {
+            chunks: 'initial',
+            minSize: 0,
+        }
+    },
     plugins: [
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',
-            minChunks: function (module) {
-                // This prevents stylesheet resources with the .css or .scss extension
-                // from being moved from their original chunk to the vendor chunk
-                if(module.resource && (/^.*\.(css|scss)$/).test(module.resource)) {
-                    return false;
-                }
-                return module.context && module.context.includes('node_modules');
-            }
-        }),
+        new webpack.HashedModuleIdsPlugin(),
         new StatsWriterPlugin(),
         new MiniCssExtractPlugin('main.[hash].css'),
         new UglifyJsPlugin({

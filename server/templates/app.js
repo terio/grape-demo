@@ -11,6 +11,7 @@ export default template(`
         </head>
         <body>
             <div id="app"><%= renderedAppString %></div>
+            <%= _.get(assets, 'main~vendor.js', []).map((js) => JS_TEMPLATE({js})).join('') %>
             <%= _.get(assets, 'vendor.js', []).map((js) => JS_TEMPLATE({js})).join('') %>
             <%= _.get(assets, 'main.js', []).map((js) => JS_TEMPLATE({js})).join('') %>
         </body>

@@ -1,5 +1,5 @@
-import {renderToString} from 'terio/lib/dom/server';
-import terio from 'terio';
+import {renderToString} from 'grape/lib/dom/server';
+import grape from 'grape';
 import App from '../client/components/app';
 import appTemplate from './templates/app';
 import Koa from 'koa';
@@ -11,7 +11,6 @@ import compress from 'koa-compress';
 const app = new Koa;
 
 const EXTENSION_REGEX = /\.([a-z]+)$/;
-
 function statsToAssets(stats) {
     return Object.entries(stats.assetsByChunkName)
         .reduce((assets, [key, value]) => {
@@ -30,13 +29,14 @@ function statsToAssets(stats) {
 
 const stats = __non_webpack_require__(resolve(paths.CLIENT_BUILD, 'stats.json'));
 const assets = statsToAssets(stats);
+const rootComponent = <App/>;
 
 app.use(compress());
 app.use(KoaStaticMiddleware(paths.CLIENT_BUILD));
 
 app.use(async ctx => {
     ctx.body = appTemplate({
-        renderedAppString: renderToString(<App/>),
+        renderedAppString: renderToString(rootComponent),
         assets
     });
 });

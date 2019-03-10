@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start:dev:server": "webpack-dev-server --config webpack/dev/webpack.config.client.babel.js",
-    "start:prod:server": "yarn build:prod:client && yarn build:prod:server && node --inspect build/server/main",
+    "start:prod:server": "yarn build:prod:client && yarn build:prod:server && node build/server/main",
     "build:prod:server": "rm -rf build/server && webpack --config webpack/prod/webpack.config.server.babel.js",
     "build:prod:client": "rm -rf build/client && webpack --config webpack/prod/webpack.config.client.babel.js"
   },
@@ -35,5 +35,11 @@
     "webpack-node-externals": "^1.7.2",
     "webpack-stats-plugin": "^0.2.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "grape": "https://github.com/terio/grape",
+    "koa": "^2.7.0",
+    "koa-compress": "^3.0.0",
+    "koa-static": "^5.0.0",
+    "lodash": "^4.17.11"
+  }
 }
