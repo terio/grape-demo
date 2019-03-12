@@ -74,6 +74,6 @@ export default class App extends Component {
         });
     }
     render() {
-        return <div><span>Array is [{this.state.items.join(', ')}]</span><button onclick={this.add.bind(this)}>add</button><button onclick={this.remove.bind(this)}>remove</button><button onclick={this.randomize.bind(this)}>randomize</button><div><List deleteItem={this.deleteItem.bind(this)} items={this.state.items}/></div></div>;
+        return <div><span>Array is [{this.state.items.join(', ')}]</span><button onclick={this.add.bind(this)}>add</button><button onclick={this.remove.bind(this)}>remove</button><button onclick={this.randomize.bind(this)}>randomize</button>{this.state.counter % 2 ? 'something' : ''}<div><List deleteItem={this.deleteItem.bind(this)} items={this.state.items}/></div></div>;
     }
 };

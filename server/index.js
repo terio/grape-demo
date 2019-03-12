@@ -36,7 +36,7 @@ app.use(KoaStaticMiddleware(paths.CLIENT_BUILD));
 
 app.use(async ctx => {
     ctx.body = appTemplate({
-        renderedAppString: renderToString(rootComponent),
+        renderedAppString: renderToString(rootComponent, true),
         assets
     });
 });
