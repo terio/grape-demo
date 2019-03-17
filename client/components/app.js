@@ -9,7 +9,7 @@ class List extends Component {
     }
     render() {
         // return <ul onclick={this.handleClick.bind(this)}><li>start</li>{this.props.items.map(e => <Li key={e}>{e}</Li>)}<li>end</li></ul>;
-        return <ul onclick={this.handleClick.bind(this)}><li>start</li>{this.props.items.filter(e => e % 2).map((e) => {
+        return <ul ref={this.props.ulRef} onclick={this.handleClick.bind(this)}><li>start</li>{this.props.items.filter(e => e % 2).map((e) => {
             return <Li onclick={this.props.deleteItem.bind(null, e)} key={e}>{e}</Li>
         })}<li>end</li><li>start2</li>{this.props.items.map((e, idx) => <Li2 key={e} deleteItem={this.props.deleteItem} liColor={LIST_STYLES[idx % 2]}>{e}</Li2>)}<li>end2</li></ul>;
     }
@@ -74,6 +74,6 @@ export default class App extends Component {
         });
     }
     render() {
-        return <div><span>Array is [{this.state.items.join(', ')}]</span><button onclick={this.add.bind(this)}>add</button><button onclick={this.remove.bind(this)}>remove</button><button onclick={this.randomize.bind(this)}>randomize</button>{this.state.counter % 2 ? 'something' : ''}<div><List deleteItem={this.deleteItem.bind(this)} items={this.state.items}/></div></div>;
+        return <div><span>Array is [{this.state.items.join(', ')}]</span><button onclick={this.add.bind(this)}>add</button><button onclick={this.remove.bind(this)}>remove</button><button onclick={this.randomize.bind(this)}>randomize</button>{this.state.counter % 2 ? 'something' : ''}<div><List ulRef={($node) => {this.$ul = $node;}} deleteItem={this.deleteItem.bind(this)} items={this.state.items}/></div></div>;
     }
 };
